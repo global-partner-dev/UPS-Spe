@@ -14,7 +14,204 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      projects: {
+        Row: {
+          category: string
+          created_at: string
+          featured: boolean
+          id: string
+          image_url: string
+          location: string
+          published: boolean
+          result: string
+          slug: string
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          featured?: boolean
+          id?: string
+          image_url?: string
+          location?: string
+          published?: boolean
+          result?: string
+          slug: string
+          summary: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          featured?: boolean
+          id?: string
+          image_url?: string
+          location?: string
+          published?: boolean
+          result?: string
+          slug?: string
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      quote_rate_limits: {
+        Row: {
+          created_at: string
+          id: string
+          requester_hash: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          requester_hash: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          requester_hash?: string
+        }
+        Relationships: []
+      }
+      quote_requests: {
+        Row: {
+          company: string
+          consent: boolean
+          created_at: string
+          email: string
+          equipment: string
+          full_name: string
+          id: string
+          message: string
+          phone: string
+          service: string
+          status: Database["public"]["Enums"]["quote_status"]
+          updated_at: string
+        }
+        Insert: {
+          company?: string
+          consent: boolean
+          created_at?: string
+          email: string
+          equipment?: string
+          full_name: string
+          id?: string
+          message: string
+          phone?: string
+          service: string
+          status?: Database["public"]["Enums"]["quote_status"]
+          updated_at?: string
+        }
+        Update: {
+          company?: string
+          consent?: boolean
+          created_at?: string
+          email?: string
+          equipment?: string
+          full_name?: string
+          id?: string
+          message?: string
+          phone?: string
+          service?: string
+          status?: Database["public"]["Enums"]["quote_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          created_at: string
+          details: string
+          display_order: number
+          icon: string
+          id: string
+          published: boolean
+          slug: string
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          details?: string
+          display_order?: number
+          icon?: string
+          id?: string
+          published?: boolean
+          slug: string
+          summary: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          details?: string
+          display_order?: number
+          icon?: string
+          id?: string
+          published?: boolean
+          slug?: string
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          availability: string
+          company_name: string
+          email: string
+          id: boolean
+          location: string
+          phone: string
+          updated_at: string
+        }
+        Insert: {
+          availability?: string
+          company_name?: string
+          email?: string
+          id?: boolean
+          location?: string
+          phone?: string
+          updated_at?: string
+        }
+        Update: {
+          availability?: string
+          company_name?: string
+          email?: string
+          id?: boolean
+          location?: string
+          phone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +220,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "editor"
+      quote_status: "new" | "contacted" | "qualified" | "closed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +348,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "editor"],
+      quote_status: ["new", "contacted", "qualified", "closed"],
+    },
   },
 } as const
