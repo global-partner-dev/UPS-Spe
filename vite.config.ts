@@ -6,6 +6,11 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  server: {
+    host: true,
+    port: 3000,
+    strictPort: false,
+  },
   plugins: [
     tsconfigPaths({ projects: ["./tsconfig.json"] }),
     tailwindcss(),
@@ -22,8 +27,7 @@ export default defineConfig({
       },
     }),
     viteReact(),
-    nitro({
-      defaultPreset: "cloudflare-module",
-    }),
+    // Auto-detects Vercel at build time; no Cloudflare preset.
+    nitro(),
   ],
 });
