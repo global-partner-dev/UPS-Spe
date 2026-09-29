@@ -1,1 +1,0 @@
-CREATE POLICY "Service role manages quote rate limits" ON public.quote_rate_limits FOR ALL TO service_role USING (true) WITH CHECK (true);
