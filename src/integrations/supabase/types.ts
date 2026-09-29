@@ -59,6 +59,24 @@ export type Database = {
         }
         Relationships: []
       }
+      quote_rate_limits: {
+        Row: {
+          created_at: string
+          id: string
+          requester_hash: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          requester_hash: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          requester_hash?: string
+        }
+        Relationships: []
+      }
       quote_requests: {
         Row: {
           company: string
