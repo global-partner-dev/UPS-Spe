@@ -3,12 +3,12 @@ import { ArrowRight, BatteryCharging, Gauge, Settings, ShieldCheck, Wrench, Zap,
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { getPublicContent } from "@/lib/content.functions";
+import { loadPublicContent } from "@/lib/public-content";
 import heroImage from "@/assets/ups-hero.jpg";
 import engineerImage from "@/assets/ups-engineer.jpg";
 
 export const Route = createFileRoute("/")({
-  loader: () => getPublicContent(),
+  loader: () => loadPublicContent(),
   head: () => ({ meta: [{ title: "UPS Spe | Uninterruptible Power & UPS Services" }, { name: "description", content: "UPS installation, preventive maintenance, battery services, repair, and power protection consulting for critical operations." }, { property: "og:title", content: "UPS Spe | Reliable Power. Uninterrupted Operations." }, { property: "og:description", content: "Professional UPS services and power protection solutions for business-critical environments." }, { property: "og:type", content: "website" }, { property: "og:url", content: "/" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/" }] }),
   component: Index,
 });
